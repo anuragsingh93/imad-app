@@ -26,9 +26,9 @@ button.onclick = function () {
 
 
 var nameInput = document.getElementById('name');
-var nam = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function () {
+    
     var request = new XMLHttpRequest();
     
     //Capture the response in a variable
@@ -49,6 +49,7 @@ submit.onclick = function () {
             }
         }
     } 
+    var nam = nameInput.value;
     request.open('GET', 'http://anuragsinghcs0027.imad.hasura-app.io/submit-name?name='+nam,true);
     request.send(null);
 };
