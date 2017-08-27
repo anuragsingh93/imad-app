@@ -29,12 +29,26 @@ var nameInput = document.getElementById('name');
 var nam = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function () {
+    var request = new XMLHttpRequest();
     
-    var name=['name1' , 'name2' , 'name3'];
-    var list='';
-    for(var i=0 ; i< names.length; i++){
-        list += '<li>' +name[i]+ '</li>';
-    }
-    var ul=document.getElementById('namelist');
-    ul.innerHTML = list;
+    //Capture the response in a variable
+    
+    request.onreadystatechanged = function () {
+        console.log("state changed");
+        if(request.readyState === XMLHttpRequest.DONE) {
+            console.log("Done");
+            if(request.status === 200) {
+                var names= request.responseText;
+                names= JSON.parse(names);
+                var list='';
+                for(var i=0 ; i< names.length; i++){
+                    list += '<li>' +name[i]+ '</li>';
+                }
+                var ul=document.getElementById('namelist');
+                ul.innerHTML = list;
+            }
+        }
+    } 
+    request.open('GET', 'http://anuragsinghcs0027.imad.hasura-app.io/submit-name?name='+nam,true);
+    request.send(null);
 };
