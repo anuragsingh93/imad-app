@@ -9,16 +9,16 @@ button.onclick = function () {
     
     request.onreadystatechanged = function () {
         if(request.readyState === XMLHttpRequest.DONE) {
-            console.log("Done")
+            console.log("Done");
             if(request.status === 200) {
-                console.log("Status")
+                console.log("Status");
                 var counter=request.responseText;
                 var span = document.getElementById('count');
                 span.innerHTML = counter.toString();
             }
         }
-    }
+    };
     //Make a request
     request.open('GET', 'http://anuragsinghcs0027.imad.hasura-app.io/counter',true);
     request.send(null);
-}
+};
