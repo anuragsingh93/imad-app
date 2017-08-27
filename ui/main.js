@@ -8,6 +8,7 @@ button.onclick = function () {
     //Capture the response in a variable
     
     request.onreadystatechanged = function () {
+        console.log("state changed");
         if(request.readyState === XMLHttpRequest.DONE) {
             console.log("Done");
             if(request.status === 200) {
